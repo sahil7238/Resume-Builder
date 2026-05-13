@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
   <title>Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --beige: #e8dcd2;
       --beige-dark: #d4c4b5;
       --dark: #2c2c2c;
       --accent: #8b6f5e;
-      --white: #ffffff;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Source Sans 3', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       display: flex;
       min-height: 100vh;
       background: #f0ece8;
@@ -23,16 +22,17 @@
 
     .resume-wrapper {
       display: flex;
+      flex-direction: row;
       width: 210mm;
       min-height: 297mm;
       margin: 30px auto;
       box-shadow: 0 4px 30px rgba(0,0,0,0.18);
     }
 
+    /* ── LEFT ── */
     .left {
       width: 34%;
       background: var(--beige);
-      padding: 0;
       display: flex;
       flex-direction: column;
     }
@@ -42,12 +42,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 30px 20px 20px;
+      padding: 28px 20px 18px;
     }
 
     .photo-area img {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid white;
@@ -55,125 +55,131 @@
     }
 
     .photo-placeholder {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: var(--beige);
       border: 4px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
+      font-size: 44px;
       color: var(--accent);
       opacity: 0.5;
     }
 
-    .left-content {
-      padding: 24px 22px;
-      flex: 1;
-    }
+    .left-content { padding: 18px 16px; flex: 1; }
 
-    .left-section { margin-bottom: 24px; }
+    .left-section { margin-bottom: 18px; }
 
     .left-section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 13px;
+      font-family: 'Merriweather', serif;
+      font-size: 10.5px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       color: var(--accent);
       border-bottom: 1.5px solid var(--beige-dark);
-      padding-bottom: 6px;
-      margin-bottom: 12px;
+      padding-bottom: 5px;
+      margin-bottom: 9px;
     }
 
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 13px;
-      line-height: 1.4;
+      gap: 6px;
+      margin-bottom: 6px;
+      font-size: 10.5px;
+      line-height: 1.5;
       color: #444;
     }
 
-    .contact-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .contact-icon { font-size: 10px; flex-shrink: 0; margin-top: 2px; }
 
-    .edu-entry { margin-bottom: 14px; }
-    .edu-degree { font-size: 13px; font-weight: 600; color: var(--dark); line-height: 1.3; }
-    .edu-school { font-size: 12px; color: #666; margin-top: 2px; }
-    .edu-year { font-size: 11px; color: #888; margin-top: 2px; }
-    .edu-details-text { font-size: 11.5px; color: #555; margin-top: 5px; line-height: 1.5; }
+    .edu-entry { margin-bottom: 11px; }
+    .edu-degree { font-size: 10.5px; font-weight: 700; color: var(--dark); line-height: 1.4; }
+    .edu-school { font-size: 10.5px; color: #666; margin-top: 1px; }
+    .edu-year { font-size: 9.5px; color: #888; margin-top: 1px; }
+    .edu-details-text { font-size: 10px; color: #555; margin-top: 4px; line-height: 1.5; }
 
     .skills-list { list-style: none; padding: 0; }
     .skills-list li {
-      font-size: 13px; color: #444; padding: 4px 0 4px 14px;
-      position: relative; line-height: 1.4;
+      font-size: 10.5px;
+      color: #444;
+      padding: 3px 0 3px 12px;
+      position: relative;
+      line-height: 1.4;
     }
     .skills-list li::before {
-      content: '▸'; position: absolute; left: 0;
-      color: var(--accent); font-size: 11px; top: 5px;
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 9px;
+      top: 4px;
     }
 
+    /* ── RIGHT ── */
     .right {
       width: 66%;
       background: white;
-      padding: 36px 34px 36px 32px;
+      padding: 28px 26px 28px 24px;
       display: flex;
       flex-direction: column;
     }
 
     .name-block {
-      margin-bottom: 20px;
-      padding-bottom: 18px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
       border-bottom: 2px solid var(--beige);
     }
 
     .resume-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      font-weight: 900;
+      font-family: 'Merriweather', serif;
+      font-size: 24px;
+      font-weight: 700;
       color: var(--dark);
-      line-height: 1.1;
+      line-height: 1.2;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .resume-title {
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 2.5px;
-      margin-top: 6px;
+      letter-spacing: 2px;
+      margin-top: 5px;
     }
 
-    .right-section { margin-bottom: 22px; }
+    .right-section { margin-bottom: 14px; }
 
     .right-section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 14px;
+      font-family: 'Merriweather', serif;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--dark);
-      border-bottom: 2px solid var(--beige);
-      padding-bottom: 6px;
-      margin-bottom: 12px;
+      border-bottom: 1.5px solid var(--beige);
+      padding-bottom: 4px;
+      margin-bottom: 9px;
     }
 
-    .summary-text { font-size: 13.5px; color: #555; line-height: 1.7; }
+    .summary-text { font-size: 11px; color: #555; line-height: 1.7; }
 
-    .job-entry { margin-bottom: 16px; }
-    .job-role { font-size: 14px; font-weight: 700; color: var(--dark); }
-    .job-company { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 1px; }
-    .job-years { font-size: 12px; color: #888; margin-top: 1px; margin-bottom: 6px; }
-    .job-details { font-size: 13px; color: #555; line-height: 1.65; white-space: pre-line; }
+    .job-entry { margin-bottom: 11px; }
+    .job-role { font-size: 11.5px; font-weight: 700; color: var(--dark); }
+    .job-company { font-size: 11px; color: var(--accent); font-weight: 600; margin-top: 1px; }
+    .job-years { font-size: 10px; color: #888; margin-top: 1px; margin-bottom: 4px; }
+    .job-details { font-size: 10.5px; color: #555; line-height: 1.6; white-space: pre-line; }
 
-    .cert-entry { margin-bottom: 8px; }
-    .cert-name-text { font-size: 13.5px; font-weight: 600; color: var(--dark); }
-    .cert-org-text { font-size: 12px; color: #888; margin-top: 1px; }
+    .cert-entry { margin-bottom: 7px; }
+    .cert-name-text { font-size: 11px; font-weight: 600; color: var(--dark); }
+    .cert-org-text { font-size: 10px; color: #888; margin-top: 1px; }
 
+    /* ── BUTTONS ── */
     .top-bar {
       position: fixed;
       top: 16px;
@@ -186,7 +192,7 @@
       color: white;
       border: none;
       padding: 10px 20px;
-      font-family: 'Source Sans 3', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
@@ -203,7 +209,7 @@
       color: var(--dark);
       border: 1px solid #ccc;
       padding: 10px 16px;
-      font-family: 'Source Sans 3', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 13px;
       cursor: pointer;
       border-radius: 3px;
@@ -213,36 +219,76 @@
 
     .back-btn:hover { background: #f0f0f0; }
 
-    /* ── PRINT FIX ── */
+    /* ── PRINT ── */
     @media print {
+      @page {
+        size: 210mm 297mm portrait;
+        margin: 0mm;
+      }
+
+      html {
+        width: 210mm;
+        height: 297mm;
+      }
+
+      body {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
       * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        color-adjust: exact !important;
       }
 
-      body { background: white; }
-      .top-bar { display: none; }
+      .top-bar { display: none !important; }
 
       .resume-wrapper {
-        margin: 0;
-        box-shadow: none;
-        width: 100%;
-        min-height: 100vh;
+        display: flex !important;
+        flex-direction: row !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: unset !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        page-break-inside: avoid !important;
       }
 
       .left {
+        width: 34% !important;
+        min-width: 34% !important;
+        max-width: 34% !important;
+        height: 297mm !important;
         background: #e8dcd2 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
       }
 
-      .photo-area {
-        background: #d4c4b5 !important;
+      .right {
+        width: 66% !important;
+        min-width: 66% !important;
+        max-width: 66% !important;
+        height: 297mm !important;
+        background: white !important;
+        overflow: hidden !important;
       }
 
-      .left-section-title {
-        color: #8b6f5e !important;
-        border-bottom-color: #d4c4b5 !important;
-      }
+      .photo-area { background: #d4c4b5 !important; }
+      .left-section-title { color: #8b6f5e !important; border-bottom-color: #d4c4b5 !important; }
+      .resume-name { color: #2c2c2c !important; }
+      .right-section-title { color: #2c2c2c !important; border-bottom-color: #e8dcd2 !important; }
+      .job-role { color: #2c2c2c !important; }
+      .job-company { color: #8b6f5e !important; }
+      .resume-title { color: #8b6f5e !important; }
     }
 
     @media (max-width: 700px) {
