@@ -2,24 +2,27 @@
 <html lang="en">
 <head>
   <title>Resume</title>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&family=Raleway:wght@300;400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
+      --accent: #8b6f5e;
       --beige: #e8dcd2;
       --beige-dark: #d4c4b5;
       --dark: #2c2c2c;
-      --accent: #8b6f5e;
+      --font: 'Open Sans', sans-serif;
+      --scale: 1;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: var(--font);
       display: flex;
       min-height: 100vh;
       background: #f0ece8;
     }
 
+    /* ── WRAPPER ── */
     .resume-wrapper {
       display: flex;
       flex-direction: row;
@@ -27,17 +30,18 @@
       min-height: 297mm;
       margin: 30px auto;
       box-shadow: 0 4px 30px rgba(0,0,0,0.18);
+      font-size: calc(11px * var(--scale));
     }
 
-    /* ── LEFT ── */
-    .left {
+    /* ══ TEMPLATE: CLASSIC ══ */
+    .tpl-classic .left {
       width: 34%;
       background: var(--beige);
       display: flex;
       flex-direction: column;
     }
 
-    .photo-area {
+    .tpl-classic .photo-area {
       background: var(--beige-dark);
       display: flex;
       align-items: center;
@@ -45,36 +49,120 @@
       padding: 28px 20px 18px;
     }
 
+    /* ══ TEMPLATE: MODERN ══ */
+    .tpl-modern .left {
+      width: 35%;
+      background: var(--accent);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tpl-modern .photo-area {
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px 18px;
+    }
+
+    .tpl-modern .left-section-title {
+      color: white !important;
+      border-bottom-color: rgba(255,255,255,0.3) !important;
+    }
+
+    .tpl-modern .contact-item,
+    .tpl-modern .edu-degree,
+    .tpl-modern .edu-school,
+    .tpl-modern .edu-year,
+    .tpl-modern .edu-details-text,
+    .tpl-modern .skills-list li {
+      color: rgba(255,255,255,0.9) !important;
+    }
+
+    .tpl-modern .skills-list li::before { color: white !important; }
+
+    /* ══ TEMPLATE: MINIMAL ══ */
+    .tpl-minimal .left {
+      width: 32%;
+      background: #fafafa;
+      border-right: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tpl-minimal .photo-area {
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px 18px;
+    }
+
+    .tpl-minimal .right { background: white; }
+
+    /* ══ TEMPLATE: ELEGANT ══ */
+    .tpl-elegant .left {
+      width: 32%;
+      background: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tpl-elegant .photo-area {
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 20px 18px;
+    }
+
+    .tpl-elegant .left-section-title {
+      color: var(--beige) !important;
+      border-bottom-color: rgba(255,255,255,0.15) !important;
+    }
+
+    .tpl-elegant .contact-item,
+    .tpl-elegant .edu-degree,
+    .tpl-elegant .edu-school,
+    .tpl-elegant .edu-year,
+    .tpl-elegant .edu-details-text,
+    .tpl-elegant .skills-list li {
+      color: rgba(255,255,255,0.8) !important;
+    }
+
+    .tpl-elegant .skills-list li::before { color: var(--beige) !important; }
+    .tpl-elegant .right { background: #fefefe; }
+    .tpl-elegant .name-block { border-bottom-color: #1a1a2e !important; }
+    .tpl-elegant .resume-name { color: #1a1a2e !important; }
+
+    /* ── SHARED LEFT STYLES ── */
     .photo-area img {
       width: 110px;
       height: 110px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid white;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
     }
 
     .photo-placeholder {
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      background: var(--beige);
       border: 4px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 44px;
-      color: var(--accent);
-      opacity: 0.5;
+      font-size: 40px;
+      opacity: 0.4;
     }
 
     .left-content { padding: 18px 16px; flex: 1; }
-
     .left-section { margin-bottom: 18px; }
 
     .left-section-title {
-      font-family: 'Merriweather', serif;
-      font-size: 10.5px;
+      font-family: var(--font);
+      font-size: calc(10px * var(--scale));
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.8px;
@@ -89,22 +177,22 @@
       align-items: flex-start;
       gap: 6px;
       margin-bottom: 6px;
-      font-size: 10.5px;
+      font-size: calc(10px * var(--scale));
       line-height: 1.5;
       color: #444;
     }
 
-    .contact-icon { font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+    .contact-icon { font-size: calc(10px * var(--scale)); flex-shrink: 0; margin-top: 2px; }
 
     .edu-entry { margin-bottom: 11px; }
-    .edu-degree { font-size: 10.5px; font-weight: 700; color: var(--dark); line-height: 1.4; }
-    .edu-school { font-size: 10.5px; color: #666; margin-top: 1px; }
-    .edu-year { font-size: 9.5px; color: #888; margin-top: 1px; }
-    .edu-details-text { font-size: 10px; color: #555; margin-top: 4px; line-height: 1.5; }
+    .edu-degree { font-size: calc(10.5px * var(--scale)); font-weight: 700; color: var(--dark); line-height: 1.4; }
+    .edu-school { font-size: calc(10px * var(--scale)); color: #666; margin-top: 1px; }
+    .edu-year { font-size: calc(9.5px * var(--scale)); color: #888; margin-top: 1px; }
+    .edu-details-text { font-size: calc(9.5px * var(--scale)); color: #555; margin-top: 4px; line-height: 1.5; }
 
     .skills-list { list-style: none; padding: 0; }
     .skills-list li {
-      font-size: 10.5px;
+      font-size: calc(10px * var(--scale));
       color: #444;
       padding: 3px 0 3px 12px;
       position: relative;
@@ -115,13 +203,13 @@
       position: absolute;
       left: 0;
       color: var(--accent);
-      font-size: 9px;
+      font-size: calc(9px * var(--scale));
       top: 4px;
     }
 
     /* ── RIGHT ── */
     .right {
-      width: 66%;
+      flex: 1;
       background: white;
       padding: 28px 26px 28px 24px;
       display: flex;
@@ -135,8 +223,8 @@
     }
 
     .resume-name {
-      font-family: 'Merriweather', serif;
-      font-size: 24px;
+      font-family: var(--font);
+      font-size: calc(24px * var(--scale));
       font-weight: 700;
       color: var(--dark);
       line-height: 1.2;
@@ -145,7 +233,7 @@
     }
 
     .resume-title {
-      font-size: 11px;
+      font-size: calc(11px * var(--scale));
       font-weight: 600;
       color: var(--accent);
       text-transform: uppercase;
@@ -156,8 +244,8 @@
     .right-section { margin-bottom: 14px; }
 
     .right-section-title {
-      font-family: 'Merriweather', serif;
-      font-size: 11px;
+      font-family: var(--font);
+      font-size: calc(11px * var(--scale));
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
@@ -167,17 +255,17 @@
       margin-bottom: 9px;
     }
 
-    .summary-text { font-size: 11px; color: #555; line-height: 1.7; }
+    .summary-text { font-size: calc(11px * var(--scale)); color: #555; line-height: 1.7; }
 
     .job-entry { margin-bottom: 11px; }
-    .job-role { font-size: 11.5px; font-weight: 700; color: var(--dark); }
-    .job-company { font-size: 11px; color: var(--accent); font-weight: 600; margin-top: 1px; }
-    .job-years { font-size: 10px; color: #888; margin-top: 1px; margin-bottom: 4px; }
-    .job-details { font-size: 10.5px; color: #555; line-height: 1.6; white-space: pre-line; }
+    .job-role { font-size: calc(11.5px * var(--scale)); font-weight: 700; color: var(--dark); }
+    .job-company { font-size: calc(11px * var(--scale)); color: var(--accent); font-weight: 600; margin-top: 1px; }
+    .job-years { font-size: calc(10px * var(--scale)); color: #888; margin-top: 1px; margin-bottom: 4px; }
+    .job-details { font-size: calc(10.5px * var(--scale)); color: #555; line-height: 1.6; white-space: pre-line; }
 
     .cert-entry { margin-bottom: 7px; }
-    .cert-name-text { font-size: 11px; font-weight: 600; color: var(--dark); }
-    .cert-org-text { font-size: 10px; color: #888; margin-top: 1px; }
+    .cert-name-text { font-size: calc(11px * var(--scale)); font-weight: 600; color: var(--dark); }
+    .cert-org-text { font-size: calc(10px * var(--scale)); color: #888; margin-top: 1px; }
 
     /* ── BUTTONS ── */
     .top-bar {
@@ -185,6 +273,9 @@
       top: 16px;
       right: 24px;
       z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .download-btn {
@@ -192,7 +283,6 @@
       color: white;
       border: none;
       padding: 10px 20px;
-      font-family: 'Open Sans', sans-serif;
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
@@ -209,11 +299,9 @@
       color: var(--dark);
       border: 1px solid #ccc;
       padding: 10px 16px;
-      font-family: 'Open Sans', sans-serif;
       font-size: 13px;
       cursor: pointer;
       border-radius: 3px;
-      margin-right: 8px;
       transition: background 0.2s;
     }
 
@@ -262,40 +350,35 @@
         page-break-inside: avoid !important;
       }
 
+      .tpl-classic .left,
+      .tpl-minimal .left { background: var(--beige) !important; }
+      .tpl-modern .left { background: var(--accent) !important; }
+      .tpl-elegant .left { background: #1a1a2e !important; }
+
+      .tpl-classic .photo-area,
+      .tpl-minimal .photo-area { background: var(--beige-dark) !important; }
+      .tpl-modern .photo-area { background: rgba(0,0,0,0.15) !important; }
+      .tpl-elegant .photo-area { background: rgba(0,0,0,0.3) !important; }
+
       .left {
-        width: 34% !important;
-        min-width: 34% !important;
-        max-width: 34% !important;
         height: 297mm !important;
-        background: #e8dcd2 !important;
         display: flex !important;
         flex-direction: column !important;
         overflow: hidden !important;
       }
 
       .right {
-        width: 66% !important;
-        min-width: 66% !important;
-        max-width: 66% !important;
         height: 297mm !important;
         background: white !important;
         overflow: hidden !important;
       }
-
-      .photo-area { background: #d4c4b5 !important; }
-      .left-section-title { color: #8b6f5e !important; border-bottom-color: #d4c4b5 !important; }
-      .resume-name { color: #2c2c2c !important; }
-      .right-section-title { color: #2c2c2c !important; border-bottom-color: #e8dcd2 !important; }
-      .job-role { color: #2c2c2c !important; }
-      .job-company { color: #8b6f5e !important; }
-      .resume-title { color: #8b6f5e !important; }
     }
 
     @media (max-width: 700px) {
       body { background: white; }
       .resume-wrapper { flex-direction: column; width: 100%; margin: 0; }
-      .left, .right { width: 100%; }
-      .top-bar { position: static; padding: 12px; background: #f0ece8; display: flex; }
+      .left, .right { width: 100% !important; }
+      .top-bar { position: static; padding: 12px; background: #f0ece8; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -306,9 +389,9 @@
   <button class="download-btn" onclick="window.print()">📄 Download PDF</button>
 </div>
 
-<div class="resume-wrapper">
+<div class="resume-wrapper" id="resume-wrapper">
 
-  <div class="left">
+  <div class="left" id="left-panel">
     <div class="photo-area" id="photo-area">
       <div class="photo-placeholder">👤</div>
     </div>
@@ -331,7 +414,7 @@
     </div>
   </div>
 
-  <div class="right">
+  <div class="right" id="right-panel">
     <div class="name-block">
       <div class="resume-name" id="name"></div>
       <div class="resume-title" id="job-title"></div>
@@ -354,11 +437,32 @@
 
 <script>
   const data = JSON.parse(localStorage.getItem("resumeData") || "{}");
+  const s = data.settings || {};
 
+  // ── APPLY SETTINGS ──
+  const root = document.documentElement;
+  const accent = s.accent || '#8b6f5e';
+  const beige  = s.bgColor || '#e8dcd2';
+  const beigeDark = s.bgDark || '#d4c4b5';
+  const font   = s.font || 'Open Sans';
+  const scale  = (s.fontSize || 100) / 100;
+  const tpl    = s.template || 'classic';
+
+  root.style.setProperty('--accent', accent);
+  root.style.setProperty('--beige', beige);
+  root.style.setProperty('--beige-dark', beigeDark);
+  root.style.setProperty('--font', `'${font}', sans-serif`);
+  root.style.setProperty('--scale', scale);
+
+  // Apply template class
+  document.getElementById('resume-wrapper').className = `resume-wrapper tpl-${tpl}`;
+
+  // ── PHOTO ──
   if (data.photo) {
     document.getElementById("photo-area").innerHTML = `<img src="${data.photo}" alt="Profile Photo">`;
   }
 
+  // ── BASIC INFO ──
   document.getElementById("name").innerText = data.name || "YOUR NAME";
   document.getElementById("job-title").innerText = data.title || "";
   document.getElementById("address").innerText = data.address || "";
@@ -374,6 +478,7 @@
   document.getElementById("summary").innerText = data.summary || "";
   if (!data.summary) document.getElementById("summary-section").style.display = "none";
 
+  // ── SKILLS ──
   const skillsList = document.getElementById("skills-list");
   (data.skills || []).forEach(s => {
     if (!s) return;
@@ -382,6 +487,7 @@
     skillsList.appendChild(li);
   });
 
+  // ── EDUCATION ──
   const eduList = document.getElementById("education-list");
   (data.education || []).forEach(e => {
     const div = document.createElement("div");
@@ -390,11 +496,12 @@
       <div class="edu-degree">${e.degree || ""}${e.fieldStudy ? " " + e.fieldStudy : ""}</div>
       <div class="edu-school">${e.school || ""}</div>
       <div class="edu-year">${e.year || ""}</div>
-      ${e.details ? `<div class="edu-details-text">${e.details.replace(/\n/g, '<br>')}</div>` : ""}
+      ${e.details ? `<div class="edu-details-text">${e.details.replace(/\n/g,'<br>')}</div>` : ""}
     `;
     eduList.appendChild(div);
   });
 
+  // ── EXPERIENCE ──
   const expList = document.getElementById("experience-list");
   (data.experience || []).forEach(e => {
     const div = document.createElement("div");
@@ -403,11 +510,12 @@
       <div class="job-role">${e.role || ""}</div>
       <div class="job-company">${e.company || ""}</div>
       <div class="job-years">${e.years || ""}</div>
-      <div class="job-details">${(e.details || "").replace(/\n/g, '<br>')}</div>
+      <div class="job-details">${(e.details || "").replace(/\n/g,'<br>')}</div>
     `;
     expList.appendChild(div);
   });
 
+  // ── CERTIFICATIONS ──
   const certList = document.getElementById("certifications-list");
   if (data.certifications && data.certifications.length > 0) {
     data.certifications.forEach(c => {

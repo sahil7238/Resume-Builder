@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Resume Builder</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Resume Builder Pro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Roboto:wght@300;400;700&family=Raleway:wght@300;400;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --beige: #e8dcd2;
       --beige-dark: #d4c4b5;
       --dark: #2c2c2c;
       --accent: #8b6f5e;
-      --white: #ffffff;
       --light-bg: #f7f4f1;
       --border: #ccc;
     }
@@ -26,45 +25,242 @@
     header {
       background: var(--dark);
       color: white;
-      padding: 22px 40px;
+      padding: 18px 40px;
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 26px;
+      font-size: 24px;
       letter-spacing: 1px;
     }
 
     header span {
-      font-size: 13px;
+      font-size: 12px;
       color: #aaa;
       font-weight: 300;
     }
 
-    .container {
-      max-width: 860px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
+    .pro-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 1px;
+      margin-left: 10px;
     }
+
+    /* ── LAYOUT ── */
+    .main-layout {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 24px;
+      padding: 30px 20px 60px;
+    }
+
+    /* ── CUSTOMIZER SIDEBAR ── */
+    .customizer {
+      width: 260px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+    }
+
+    .customizer-card {
+      background: white;
+      border-radius: 6px;
+      padding: 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+    }
+
+    .customizer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-bottom: 2px solid var(--beige);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    /* TEMPLATE PICKER */
+    .template-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .template-thumb {
+      border: 2px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 8px 6px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: #666;
+      transition: all 0.2s;
+      background: #fafafa;
+    }
+
+    .template-thumb:hover { border-color: var(--accent); color: var(--accent); }
+    .template-thumb.active { border-color: var(--accent); background: #f5ede8; color: var(--accent); }
+
+    .template-preview {
+      height: 50px;
+      border-radius: 2px;
+      margin-bottom: 5px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .tp-left { background: #e8dcd2; }
+    .tp-right { background: white; flex: 1; }
+
+    .tpl-modern .tp-left { background: #2c3e50; width: 35%; }
+    .tpl-modern .tp-right { background: #f8f8f8; }
+    .tpl-minimal .tp-left { background: white; width: 0; border-right: 3px solid #333; }
+    .tpl-minimal .tp-right { background: white; }
+    .tpl-elegant .tp-left { background: #1a1a2e; width: 32%; }
+    .tpl-elegant .tp-right { background: #fefefe; }
+
+    /* COLOR THEMES */
+    .color-themes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .color-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .color-swatch:hover { transform: scale(1.15); }
+    .color-swatch.active { border-color: var(--dark); transform: scale(1.15); }
+
+    .color-swatch::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 50%;
+    }
+
+    /* CUSTOM COLOR */
+    .custom-color-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .custom-color-row label {
+      font-size: 11px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="color"] {
+      width: 36px;
+      height: 28px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 2px;
+      cursor: pointer;
+      background: white;
+    }
+
+    /* FONT SIZE */
+    .size-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .size-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      color: var(--dark);
+    }
+
+    .size-btn:hover { background: var(--beige); border-color: var(--accent); }
+
+    .size-display {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      min-width: 40px;
+      text-align: center;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent);
+    }
+
+    /* FONT SELECTOR */
+    .font-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .font-option {
+      padding: 8px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      background: #fafafa;
+      color: #444;
+    }
+
+    .font-option:hover { border-color: var(--accent); background: #f5ede8; }
+    .font-option.active { border-color: var(--accent); background: #f5ede8; color: var(--accent); font-weight: 600; }
+
+    /* ── FORM AREA ── */
+    .form-area { flex: 1; min-width: 0; }
 
     .card {
       background: white;
       border-radius: 4px;
-      padding: 32px 36px;
-      margin-bottom: 24px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
       box-shadow: 0 1px 6px rgba(0,0,0,0.07);
     }
 
     .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 17px;
       color: var(--accent);
       border-bottom: 2px solid var(--beige);
       padding-bottom: 10px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
     }
@@ -72,15 +268,14 @@
     .photo-upload-area {
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-bottom: 24px;
+      gap: 24px;
+      margin-bottom: 20px;
     }
 
     #photo-preview {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      object-fit: cover;
       background: var(--beige);
       display: flex;
       align-items: center;
@@ -90,26 +285,15 @@
       flex-shrink: 0;
     }
 
-    #photo-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #photo-preview .placeholder {
-      font-size: 36px;
-      color: var(--accent);
-      opacity: 0.5;
-    }
+    #photo-preview img { width: 100%; height: 100%; object-fit: cover; }
 
     .photo-btn {
       background: var(--beige);
       color: var(--dark);
       border: none;
-      padding: 10px 20px;
+      padding: 9px 18px;
       cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       border-radius: 3px;
       transition: background 0.2s;
@@ -120,33 +304,33 @@
     .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
     .field {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-bottom: 16px;
+      gap: 5px;
+      margin-bottom: 14px;
     }
 
     label {
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 10px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #888;
+      color: #999;
     }
 
-    input, textarea {
+    input, textarea, select {
       border: 1px solid var(--border);
       border-radius: 3px;
-      padding: 10px 13px;
+      padding: 9px 12px;
       font-family: 'Source Sans 3', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--dark);
       background: #fafafa;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s;
       width: 100%;
     }
 
@@ -156,50 +340,41 @@
       background: white;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
+    textarea { resize: vertical; min-height: 80px; }
 
     .exp-block, .edu-block {
       background: var(--light-bg);
       border: 1px solid #e0d8d0;
       border-left: 3px solid var(--accent);
       border-radius: 3px;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
       position: relative;
     }
 
     .remove-btn {
       position: absolute;
-      top: 12px;
-      right: 14px;
+      top: 10px;
+      right: 12px;
       background: none;
       border: 1px solid #ccc;
       color: #999;
-      font-size: 12px;
-      padding: 3px 9px;
+      font-size: 11px;
+      padding: 3px 8px;
       cursor: pointer;
       border-radius: 3px;
-      font-family: 'Source Sans 3', sans-serif;
       transition: all 0.2s;
     }
 
-    .remove-btn:hover {
-      background: #fee;
-      border-color: #e88;
-      color: #c44;
-    }
+    .remove-btn:hover { background: #fee; border-color: #e88; color: #c44; }
 
     .add-btn {
       background: none;
       border: 2px dashed var(--beige-dark);
       color: var(--accent);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      font-family: 'Source Sans 3', sans-serif;
-      padding: 10px 20px;
+      padding: 9px 18px;
       cursor: pointer;
       border-radius: 3px;
       width: 100%;
@@ -207,198 +382,322 @@
       margin-top: 4px;
     }
 
-    .add-btn:hover {
-      background: var(--beige);
-      border-color: var(--accent);
-    }
+    .add-btn:hover { background: var(--beige); border-color: var(--accent); }
 
     .generate-btn {
       display: block;
       width: 100%;
-      padding: 16px;
+      padding: 15px;
       background: var(--dark);
       color: white;
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 17px;
       letter-spacing: 2px;
       border: none;
       cursor: pointer;
       border-radius: 3px;
       transition: background 0.2s;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .generate-btn:hover { background: #444; }
 
+    @media (max-width: 900px) {
+      .main-layout { flex-direction: column; }
+      .customizer { width: 100%; position: static; }
+    }
+
     @media (max-width: 600px) {
       .row { grid-template-columns: 1fr; }
-      .card { padding: 22px 18px; }
+      .card { padding: 18px 16px; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div>
+  <div style="display:flex;align-items:center;">
     <h1>Resume Builder</h1>
-    <span>Fill in your details and generate a professional resume</span>
+    <span class="pro-badge">PRO</span>
   </div>
+  <span>Design your perfect resume</span>
 </header>
 
-<div class="container">
+<div class="main-layout">
 
-  <div class="card">
-    <div class="card-title">Personal Information</div>
-    <div class="photo-upload-area">
-      <div id="photo-preview">
-        <span class="placeholder">👤</span>
-      </div>
-      <div>
-        <p style="font-size:14px;color:#666;margin-bottom:10px;">Upload a professional photo</p>
-        <button class="photo-btn" onclick="document.getElementById('photo-input').click()">Choose Photo</button>
-        <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="previewPhoto(event)">
-      </div>
-    </div>
-    <div class="row">
-      <div class="field">
-        <label>Full Name</label>
-        <input id="name" placeholder="e.g. Jacqueline Thompson">
-      </div>
-      <div class="field">
-        <label>Job Title</label>
-        <input id="title" placeholder="e.g. Digital Marketing Executive">
-      </div>
-    </div>
-  </div>
+  <!-- ── CUSTOMIZER SIDEBAR ── -->
+  <div class="customizer">
 
-  <div class="card">
-    <div class="card-title">Contact Details</div>
-    <div class="row">
-      <div class="field">
-        <label>Phone</label>
-        <input id="phone" placeholder="+123-456-7890">
-      </div>
-      <div class="field">
-        <label>Email</label>
-        <input id="email" placeholder="hello@example.com">
-      </div>
-      <div class="field">
-        <label>Address</label>
-        <input id="address" placeholder="123 Anywhere St., Any City">
-      </div>
-      <div class="field">
-        <label>Website (optional)</label>
-        <input id="website" placeholder="www.yoursite.com">
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Professional Summary</div>
-    <div class="field">
-      <label>Summary</label>
-      <textarea id="summary" placeholder="Results-driven professional with a proven track record in..."></textarea>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Skills</div>
-    <div class="field">
-      <label>Skills (comma separated)</label>
-      <input id="skills" placeholder="e.g. Digital Marketing Strategy, SEO Optimization, Email Marketing">
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">Work Experience</div>
-    <div id="experience-container">
-      <div class="exp-block">
-        <div class="row">
-          <div class="field">
-            <label>Job Title / Role</label>
-            <input class="role" placeholder="e.g. Digital Marketing Specialist">
+    <div class="customizer-card">
+      <div class="customizer-title">🎨 Template</div>
+      <div class="template-grid">
+        <div class="template-thumb active" onclick="setTemplate('classic')" id="tpl-classic">
+          <div class="template-preview">
+            <div class="tp-left" style="width:34%"></div>
+            <div class="tp-right"></div>
           </div>
-          <div class="field">
-            <label>Company</label>
-            <input class="company" placeholder="e.g. Borcelle Marketing Agency">
-          </div>
-          <div class="field">
-            <label>Duration</label>
-            <input class="years" placeholder="e.g. Jan 2023 – Present">
-          </div>
+          Classic
         </div>
-        <div class="field">
-          <label>Responsibilities / Achievements</label>
-          <textarea class="details" placeholder="• Developed and executed strategies...&#10;• Managed social media campaigns..."></textarea>
+        <div class="template-thumb" onclick="setTemplate('modern')" id="tpl-modern">
+          <div class="template-preview tpl-modern">
+            <div class="tp-left" style="width:35%"></div>
+            <div class="tp-right"></div>
+          </div>
+          Modern
+        </div>
+        <div class="template-thumb" onclick="setTemplate('minimal')" id="tpl-minimal">
+          <div class="template-preview tpl-minimal">
+            <div class="tp-left"></div>
+            <div class="tp-right"></div>
+          </div>
+          Minimal
+        </div>
+        <div class="template-thumb" onclick="setTemplate('elegant')" id="tpl-elegant">
+          <div class="template-preview tpl-elegant">
+            <div class="tp-left"></div>
+            <div class="tp-right"></div>
+          </div>
+          Elegant
         </div>
       </div>
     </div>
-    <button class="add-btn" onclick="addExperience()">+ Add Another Job</button>
-  </div>
 
-  <div class="card">
-    <div class="card-title">Education</div>
-    <div id="education-container">
-      <div class="edu-block">
-        <div class="row">
-          <div class="field">
-            <label>Degree / Qualification</label>
-            <input class="degree" placeholder="e.g. Bachelor of Business Administration">
-          </div>
-          <div class="field">
-            <label>Field of Study</label>
-            <input class="field-study" placeholder="e.g. in Marketing">
-          </div>
-          <div class="field">
-            <label>School / University</label>
-            <input class="school" placeholder="e.g. University of Business Excellence">
-          </div>
-          <div class="field">
-            <label>Year / Duration</label>
-            <input class="year" placeholder="e.g. Sep 2017 – Oct 2020">
-          </div>
-        </div>
-        <div class="field">
-          <label>Notable Achievements (optional)</label>
-          <textarea class="edu-details" placeholder="• Thesis on 'Innovative Strategies...'&#10;• Specialization in Digital Marketing" style="min-height:60px;"></textarea>
-        </div>
+    <div class="customizer-card">
+      <div class="customizer-title">🎨 Color Theme</div>
+      <div class="color-themes">
+        <div class="color-swatch active" style="background:#8b6f5e" title="Warm Brown" onclick="setColor('#8b6f5e','#e8dcd2','#d4c4b5')" id="swatch-0"></div>
+        <div class="color-swatch" style="background:#2c6e8a" title="Ocean Blue" onclick="setColor('#2c6e8a','#d6eaf8','#b3d4e8')" id="swatch-1"></div>
+        <div class="color-swatch" style="background:#2e7d32" title="Forest Green" onclick="setColor('#2e7d32','#d5ebd6','#b5d9b7')" id="swatch-2"></div>
+        <div class="color-swatch" style="background:#6a1f6e" title="Royal Purple" onclick="setColor('#6a1f6e','#ead5eb','#d4add5')" id="swatch-3"></div>
+        <div class="color-swatch" style="background:#c0392b" title="Classic Red" onclick="setColor('#c0392b','#fadbd8','#f5b7b1')" id="swatch-4"></div>
+        <div class="color-swatch" style="background:#1a1a2e" title="Navy Dark" onclick="setColor('#1a1a2e','#d5d5e8','#b8b8d4')" id="swatch-5"></div>
+        <div class="color-swatch" style="background:#e67e22" title="Sunset Orange" onclick="setColor('#e67e22','#fde9d3','#fad3aa')" id="swatch-6"></div>
+        <div class="color-swatch" style="background:#2c2c2c" title="Pure Black" onclick="setColor('#2c2c2c','#e8e8e8','#d0d0d0')" id="swatch-7"></div>
+      </div>
+      <div class="custom-color-row">
+        <label>Custom:</label>
+        <input type="color" id="custom-accent" value="#8b6f5e" oninput="applyCustomColor()">
+        <input type="color" id="custom-bg" value="#e8dcd2" oninput="applyCustomColor()">
+        <span style="font-size:10px;color:#999">Accent / BG</span>
       </div>
     </div>
-    <button class="add-btn" onclick="addEducation()">+ Add Education</button>
-  </div>
 
-  <div class="card">
-    <div class="card-title">Certifications</div>
-    <div id="cert-container">
-      <div class="cert-block" style="display:flex;gap:12px;margin-bottom:12px;">
-        <input class="cert-name" placeholder="e.g. Certified Digital Marketing Professional (CDMP)" style="flex:2">
-        <input class="cert-org" placeholder="Issuing Organization" style="flex:1">
+    <div class="customizer-card">
+      <div class="customizer-title">🔤 Font Size</div>
+      <div class="size-control">
+        <button class="size-btn" onclick="changeSize(-1)">−</button>
+        <span class="size-display" id="size-display">100%</span>
+        <button class="size-btn" onclick="changeSize(1)">+</button>
+      </div>
+      <input type="range" min="80" max="120" value="100" id="size-slider" oninput="sliderSize(this.value)" style="width:100%;margin-top:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:#aaa;margin-top:3px;">
+        <span>Small</span><span>Default</span><span>Large</span>
       </div>
     </div>
-    <button class="add-btn" onclick="addCert()">+ Add Certification</button>
+
+    <div class="customizer-card">
+      <div class="customizer-title">✍️ Font Style</div>
+      <div class="font-options">
+        <div class="font-option active" style="font-family:'Open Sans',sans-serif" onclick="setFont('Open Sans')" id="font-Open Sans">Open Sans — Clean & Modern</div>
+        <div class="font-option" style="font-family:'Merriweather',serif" onclick="setFont('Merriweather')" id="font-Merriweather">Merriweather — Classic Serif</div>
+        <div class="font-option" style="font-family:'Roboto',sans-serif" onclick="setFont('Roboto')" id="font-Roboto">Roboto — Tech & Minimal</div>
+        <div class="font-option" style="font-family:'Raleway',sans-serif" onclick="setFont('Raleway')" id="font-Raleway">Raleway — Elegant & Thin</div>
+        <div class="font-option" style="font-family:'Lato',sans-serif" onclick="setFont('Lato')" id="font-Lato">Lato — Friendly & Bold</div>
+        <div class="font-option" style="font-family:'Crimson Text',serif" onclick="setFont('Crimson Text')" id="font-Crimson Text">Crimson Text — Literary</div>
+      </div>
+    </div>
+
   </div>
 
-  <button class="generate-btn" onclick="generate()">GENERATE RESUME →</button>
+  <!-- ── FORM AREA ── -->
+  <div class="form-area">
 
+    <div class="card">
+      <div class="card-title">Personal Information</div>
+      <div class="photo-upload-area">
+        <div id="photo-preview"><span style="font-size:32px">👤</span></div>
+        <div>
+          <p style="font-size:13px;color:#666;margin-bottom:8px;">Upload a professional photo</p>
+          <button class="photo-btn" onclick="document.getElementById('photo-input').click()">Choose Photo</button>
+          <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Full Name</label><input id="name" placeholder="e.g. Jacqueline Thompson"></div>
+        <div class="field"><label>Job Title</label><input id="title" placeholder="e.g. Digital Marketing Executive"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Contact Details</div>
+      <div class="row">
+        <div class="field"><label>Phone</label><input id="phone" placeholder="+123-456-7890"></div>
+        <div class="field"><label>Email</label><input id="email" placeholder="hello@example.com"></div>
+        <div class="field"><label>Address</label><input id="address" placeholder="123 Anywhere St., Any City"></div>
+        <div class="field"><label>Website (optional)</label><input id="website" placeholder="www.yoursite.com"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Professional Summary</div>
+      <div class="field"><label>Summary</label><textarea id="summary" placeholder="Results-driven professional with a proven track record in..."></textarea></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Skills</div>
+      <div class="field"><label>Skills (comma separated)</label><input id="skills" placeholder="e.g. Digital Marketing, SEO, Email Marketing"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Work Experience</div>
+      <div id="experience-container">
+        <div class="exp-block">
+          <div class="row">
+            <div class="field"><label>Job Title / Role</label><input class="role" placeholder="e.g. Digital Marketing Specialist"></div>
+            <div class="field"><label>Company</label><input class="company" placeholder="e.g. Borcelle Marketing Agency"></div>
+            <div class="field"><label>Duration</label><input class="years" placeholder="e.g. Jan 2023 – Present"></div>
+          </div>
+          <div class="field"><label>Responsibilities / Achievements</label><textarea class="details" placeholder="• Developed strategies...&#10;• Managed campaigns..."></textarea></div>
+        </div>
+      </div>
+      <button class="add-btn" onclick="addExperience()">+ Add Another Job</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Education</div>
+      <div id="education-container">
+        <div class="edu-block">
+          <div class="row">
+            <div class="field"><label>Degree</label><input class="degree" placeholder="e.g. Bachelor of Business Administration"></div>
+            <div class="field"><label>Field of Study</label><input class="field-study" placeholder="e.g. in Marketing"></div>
+            <div class="field"><label>School / University</label><input class="school" placeholder="e.g. University of Excellence"></div>
+            <div class="field"><label>Year / Duration</label><input class="year" placeholder="e.g. Sep 2017 – Oct 2020"></div>
+          </div>
+          <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Thesis on..." style="min-height:55px;"></textarea></div>
+        </div>
+      </div>
+      <button class="add-btn" onclick="addEducation()">+ Add Education</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Certifications</div>
+      <div id="cert-container">
+        <div class="cert-block" style="display:flex;gap:10px;margin-bottom:10px;">
+          <input class="cert-name" placeholder="e.g. Certified Digital Marketing Professional (CDMP)" style="flex:2">
+          <input class="cert-org" placeholder="Issuing Organization" style="flex:1">
+        </div>
+      </div>
+      <button class="add-btn" onclick="addCert()">+ Add Certification</button>
+    </div>
+
+    <button class="generate-btn" onclick="generate()">GENERATE RESUME →</button>
+
+  </div>
 </div>
 
 <script>
+  // ── STATE ──
+  let settings = {
+    template: 'classic',
+    accent: '#8b6f5e',
+    bgColor: '#e8dcd2',
+    bgDark: '#d4c4b5',
+    font: 'Open Sans',
+    fontSize: 100
+  };
+
+  // ── TEMPLATE ──
+  function setTemplate(t) {
+    settings.template = t;
+    document.querySelectorAll('.template-thumb').forEach(el => el.classList.remove('active'));
+    document.getElementById('tpl-' + t).classList.add('active');
+  }
+
+  // ── COLOR ──
+  function setColor(accent, bg, bgDark, idx) {
+    settings.accent = accent;
+    settings.bgColor = bg;
+    settings.bgDark = bgDark;
+    document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+    if (idx !== undefined) document.getElementById('swatch-' + idx).classList.add('active');
+    document.getElementById('custom-accent').value = accent;
+    document.getElementById('custom-bg').value = bg;
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--beige', bg);
+    document.documentElement.style.setProperty('--beige-dark', bgDark);
+  }
+
+  // override setColor calls to pass index
+  const swatchColors = [
+    ['#8b6f5e','#e8dcd2','#d4c4b5'],
+    ['#2c6e8a','#d6eaf8','#b3d4e8'],
+    ['#2e7d32','#d5ebd6','#b5d9b7'],
+    ['#6a1f6e','#ead5eb','#d4add5'],
+    ['#c0392b','#fadbd8','#f5b7b1'],
+    ['#1a1a2e','#d5d5e8','#b8b8d4'],
+    ['#e67e22','#fde9d3','#fad3aa'],
+    ['#2c2c2c','#e8e8e8','#d0d0d0'],
+  ];
+
+  document.querySelectorAll('.color-swatch').forEach((el, i) => {
+    el.onclick = () => setColor(...swatchColors[i], i);
+  });
+
+  function applyCustomColor() {
+    settings.accent = document.getElementById('custom-accent').value;
+    settings.bgColor = document.getElementById('custom-bg').value;
+    settings.bgDark = shadeColor(settings.bgColor, -15);
+    document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+    document.documentElement.style.setProperty('--accent', settings.accent);
+    document.documentElement.style.setProperty('--beige', settings.bgColor);
+    document.documentElement.style.setProperty('--beige-dark', settings.bgDark);
+  }
+
+  function shadeColor(hex, percent) {
+    const num = parseInt(hex.replace('#',''), 16);
+    const r = Math.max(0, Math.min(255, (num >> 16) + percent));
+    const g = Math.max(0, Math.min(255, ((num >> 8) & 0xff) + percent));
+    const b = Math.max(0, Math.min(255, (num & 0xff) + percent));
+    return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  // ── FONT SIZE ──
+  function changeSize(delta) {
+    settings.fontSize = Math.max(80, Math.min(120, settings.fontSize + delta * 5));
+    document.getElementById('size-display').innerText = settings.fontSize + '%';
+    document.getElementById('size-slider').value = settings.fontSize;
+  }
+
+  function sliderSize(val) {
+    settings.fontSize = parseInt(val);
+    document.getElementById('size-display').innerText = settings.fontSize + '%';
+  }
+
+  // ── FONT ──
+  function setFont(font) {
+    settings.font = font;
+    document.querySelectorAll('.font-option').forEach(el => el.classList.remove('active'));
+    document.getElementById('font-' + font).classList.add('active');
+  }
+
+  // ── PHOTO ──
   function previewPhoto(event) {
     const file = event.target.files[0];
     if (!file) return;
     const reader = new FileReader();
     reader.onload = e => {
-      document.getElementById('photo-preview').innerHTML = `<img src="${e.target.result}" alt="Photo">`;
+      document.getElementById('photo-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
       window._photoData = e.target.result;
     };
     reader.readAsDataURL(file);
   }
 
+  // ── ADD/REMOVE BLOCKS ──
   function addExperience() {
-    const container = document.getElementById("experience-container");
-    const block = document.createElement("div");
-    block.classList.add("exp-block");
-    block.innerHTML = `
+    const c = document.getElementById("experience-container");
+    const b = document.createElement("div");
+    b.classList.add("exp-block");
+    b.innerHTML = `
       <button class="remove-btn" onclick="this.parentElement.remove()">✕ Remove</button>
       <div class="row">
         <div class="field"><label>Job Title / Role</label><input class="role" placeholder="e.g. Marketing Coordinator"></div>
@@ -407,41 +706,43 @@
       </div>
       <div class="field"><label>Responsibilities / Achievements</label><textarea class="details" placeholder="• Coordinated events..."></textarea></div>
     `;
-    container.appendChild(block);
+    c.appendChild(b);
   }
 
   function addEducation() {
-    const container = document.getElementById("education-container");
-    const block = document.createElement("div");
-    block.classList.add("edu-block");
-    block.innerHTML = `
+    const c = document.getElementById("education-container");
+    const b = document.createElement("div");
+    b.classList.add("edu-block");
+    b.innerHTML = `
       <button class="remove-btn" onclick="this.parentElement.remove()">✕ Remove</button>
       <div class="row">
-        <div class="field"><label>Degree / Qualification</label><input class="degree" placeholder="e.g. Diploma"></div>
+        <div class="field"><label>Degree</label><input class="degree" placeholder="e.g. Diploma"></div>
         <div class="field"><label>Field of Study</label><input class="field-study" placeholder="e.g. in Digital Marketing"></div>
         <div class="field"><label>School / University</label><input class="school" placeholder="e.g. Marketing Academy"></div>
         <div class="field"><label>Year / Duration</label><input class="year" placeholder="e.g. Aug 2015 – Aug 2017"></div>
       </div>
-      <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Relevant Coursework..." style="min-height:60px;"></textarea></div>
+      <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Relevant Coursework..." style="min-height:55px;"></textarea></div>
     `;
-    container.appendChild(block);
+    c.appendChild(b);
   }
 
   function addCert() {
-    const container = document.getElementById("cert-container");
-    const div = document.createElement("div");
-    div.className = "cert-block";
-    div.style.cssText = "display:flex;gap:12px;margin-bottom:12px;position:relative;";
-    div.innerHTML = `
+    const c = document.getElementById("cert-container");
+    const d = document.createElement("div");
+    d.className = "cert-block";
+    d.style.cssText = "display:flex;gap:10px;margin-bottom:10px;position:relative;";
+    d.innerHTML = `
       <input class="cert-name" placeholder="Certification name" style="flex:2">
       <input class="cert-org" placeholder="Issuing Organization" style="flex:1">
       <button class="remove-btn" style="position:static;margin-left:4px;" onclick="this.parentElement.remove()">✕</button>
     `;
-    container.appendChild(div);
+    c.appendChild(d);
   }
 
+  // ── GENERATE ──
   function generate() {
     const data = {
+      settings,
       photo: window._photoData || null,
       name: document.getElementById("name").value,
       title: document.getElementById("title").value,
@@ -456,28 +757,28 @@
       certifications: []
     };
 
-    document.querySelectorAll(".exp-block").forEach(block => {
+    document.querySelectorAll(".exp-block").forEach(b => {
       data.experience.push({
-        role: block.querySelector(".role").value,
-        company: block.querySelector(".company").value,
-        years: block.querySelector(".years").value,
-        details: block.querySelector(".details").value
+        role: b.querySelector(".role").value,
+        company: b.querySelector(".company").value,
+        years: b.querySelector(".years").value,
+        details: b.querySelector(".details").value
       });
     });
 
-    document.querySelectorAll(".edu-block").forEach(block => {
+    document.querySelectorAll(".edu-block").forEach(b => {
       data.education.push({
-        degree: block.querySelector(".degree").value,
-        fieldStudy: block.querySelector(".field-study").value,
-        school: block.querySelector(".school").value,
-        year: block.querySelector(".year").value,
-        details: block.querySelector(".edu-details").value
+        degree: b.querySelector(".degree").value,
+        fieldStudy: b.querySelector(".field-study").value,
+        school: b.querySelector(".school").value,
+        year: b.querySelector(".year").value,
+        details: b.querySelector(".edu-details").value
       });
     });
 
-    document.querySelectorAll(".cert-block").forEach(block => {
-      const name = block.querySelector(".cert-name").value;
-      const org = block.querySelector(".cert-org").value;
+    document.querySelectorAll(".cert-block").forEach(b => {
+      const name = b.querySelector(".cert-name").value;
+      const org = b.querySelector(".cert-org").value;
       if (name) data.certifications.push({ name, org });
     });
 
@@ -485,6 +786,5 @@
     window.location.href = "resume.html";
   }
 </script>
-
 </body>
 </html>
