@@ -37,11 +37,7 @@
       letter-spacing: 1px;
     }
 
-    header span {
-      font-size: 12px;
-      color: #aaa;
-      font-weight: 300;
-    }
+    header span { font-size: 12px; color: #aaa; font-weight: 300; }
 
     .pro-badge {
       background: var(--accent);
@@ -54,7 +50,29 @@
       margin-left: 10px;
     }
 
-    /* ── LAYOUT ── */
+    .autosave-indicator {
+      font-size: 11px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .autosave-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf50;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .autosave-dot.saving { background: #ff9800; animation: none; }
+
     .main-layout {
       display: flex;
       max-width: 1200px;
@@ -63,7 +81,7 @@
       padding: 30px 20px 60px;
     }
 
-    /* ── CUSTOMIZER SIDEBAR ── */
+    /* ── CUSTOMIZER ── */
     .customizer {
       width: 260px;
       flex-shrink: 0;
@@ -91,7 +109,6 @@
       margin-bottom: 14px;
     }
 
-    /* TEMPLATE PICKER */
     .template-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -124,7 +141,6 @@
 
     .tp-left { background: #e8dcd2; }
     .tp-right { background: white; flex: 1; }
-
     .tpl-modern .tp-left { background: #2c3e50; width: 35%; }
     .tpl-modern .tp-right { background: #f8f8f8; }
     .tpl-minimal .tp-left { background: white; width: 0; border-right: 3px solid #333; }
@@ -132,7 +148,6 @@
     .tpl-elegant .tp-left { background: #1a1a2e; width: 32%; }
     .tpl-elegant .tp-right { background: #fefefe; }
 
-    /* COLOR THEMES */
     .color-themes {
       display: flex;
       flex-wrap: wrap;
@@ -146,20 +161,11 @@
       cursor: pointer;
       border: 3px solid transparent;
       transition: all 0.2s;
-      position: relative;
     }
 
     .color-swatch:hover { transform: scale(1.15); }
     .color-swatch.active { border-color: var(--dark); transform: scale(1.15); }
 
-    .color-swatch::after {
-      content: '';
-      position: absolute;
-      inset: 2px;
-      border-radius: 50%;
-    }
-
-    /* CUSTOM COLOR */
     .custom-color-row {
       display: flex;
       align-items: center;
@@ -167,12 +173,7 @@
       margin-top: 10px;
     }
 
-    .custom-color-row label {
-      font-size: 11px;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+    .custom-color-row label { font-size: 11px; color: #888; text-transform: uppercase; }
 
     input[type="color"] {
       width: 36px;
@@ -184,7 +185,6 @@
       background: white;
     }
 
-    /* FONT SIZE */
     .size-control {
       display: flex;
       align-items: center;
@@ -217,17 +217,9 @@
       text-align: center;
     }
 
-    input[type="range"] {
-      flex: 1;
-      accent-color: var(--accent);
-    }
+    input[type="range"] { flex: 1; accent-color: var(--accent); }
 
-    /* FONT SELECTOR */
-    .font-options {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .font-options { display: flex; flex-direction: column; gap: 6px; }
 
     .font-option {
       padding: 8px 12px;
@@ -243,7 +235,7 @@
     .font-option:hover { border-color: var(--accent); background: #f5ede8; }
     .font-option.active { border-color: var(--accent); background: #f5ede8; color: var(--accent); font-weight: 600; }
 
-    /* ── FORM AREA ── */
+    /* ── FORM ── */
     .form-area { flex: 1; min-width: 0; }
 
     .card {
@@ -301,6 +293,21 @@
 
     .photo-btn:hover { background: var(--beige-dark); }
 
+    .clear-photo-btn {
+      background: none;
+      border: 1px solid #ccc;
+      color: #999;
+      font-size: 11px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-top: 6px;
+      display: block;
+      transition: all 0.2s;
+    }
+
+    .clear-photo-btn:hover { background: #fee; border-color: #e88; color: #c44; }
+
     .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -322,7 +329,7 @@
       color: #999;
     }
 
-    input, textarea, select {
+    input, textarea {
       border: 1px solid var(--border);
       border-radius: 3px;
       padding: 9px 12px;
@@ -384,9 +391,14 @@
 
     .add-btn:hover { background: var(--beige); border-color: var(--accent); }
 
+    .bottom-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
     .generate-btn {
-      display: block;
-      width: 100%;
+      flex: 1;
       padding: 15px;
       background: var(--dark);
       color: white;
@@ -397,10 +409,22 @@
       cursor: pointer;
       border-radius: 3px;
       transition: background 0.2s;
-      margin-top: 8px;
     }
 
     .generate-btn:hover { background: #444; }
+
+    .clear-all-btn {
+      padding: 15px 20px;
+      background: none;
+      color: #999;
+      font-size: 13px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .clear-all-btn:hover { background: #fee; border-color: #e88; color: #c44; }
 
     @media (max-width: 900px) {
       .main-layout { flex-direction: column; }
@@ -420,12 +444,15 @@
     <h1>Resume Builder</h1>
     <span class="pro-badge">PRO</span>
   </div>
-  <span>Design your perfect resume</span>
+  <div class="autosave-indicator">
+    <div class="autosave-dot" id="autosave-dot"></div>
+    <span id="autosave-text">Auto-saved</span>
+  </div>
 </header>
 
 <div class="main-layout">
 
-  <!-- ── CUSTOMIZER SIDEBAR ── -->
+  <!-- ── CUSTOMIZER ── -->
   <div class="customizer">
 
     <div class="customizer-card">
@@ -464,16 +491,7 @@
 
     <div class="customizer-card">
       <div class="customizer-title">🎨 Color Theme</div>
-      <div class="color-themes">
-        <div class="color-swatch active" style="background:#8b6f5e" title="Warm Brown" onclick="setColor('#8b6f5e','#e8dcd2','#d4c4b5')" id="swatch-0"></div>
-        <div class="color-swatch" style="background:#2c6e8a" title="Ocean Blue" onclick="setColor('#2c6e8a','#d6eaf8','#b3d4e8')" id="swatch-1"></div>
-        <div class="color-swatch" style="background:#2e7d32" title="Forest Green" onclick="setColor('#2e7d32','#d5ebd6','#b5d9b7')" id="swatch-2"></div>
-        <div class="color-swatch" style="background:#6a1f6e" title="Royal Purple" onclick="setColor('#6a1f6e','#ead5eb','#d4add5')" id="swatch-3"></div>
-        <div class="color-swatch" style="background:#c0392b" title="Classic Red" onclick="setColor('#c0392b','#fadbd8','#f5b7b1')" id="swatch-4"></div>
-        <div class="color-swatch" style="background:#1a1a2e" title="Navy Dark" onclick="setColor('#1a1a2e','#d5d5e8','#b8b8d4')" id="swatch-5"></div>
-        <div class="color-swatch" style="background:#e67e22" title="Sunset Orange" onclick="setColor('#e67e22','#fde9d3','#fad3aa')" id="swatch-6"></div>
-        <div class="color-swatch" style="background:#2c2c2c" title="Pure Black" onclick="setColor('#2c2c2c','#e8e8e8','#d0d0d0')" id="swatch-7"></div>
-      </div>
+      <div class="color-themes" id="swatch-container"></div>
       <div class="custom-color-row">
         <label>Custom:</label>
         <input type="color" id="custom-accent" value="#8b6f5e" oninput="applyCustomColor()">
@@ -509,7 +527,7 @@
 
   </div>
 
-  <!-- ── FORM AREA ── -->
+  <!-- ── FORM ── -->
   <div class="form-area">
 
     <div class="card">
@@ -520,6 +538,7 @@
           <p style="font-size:13px;color:#666;margin-bottom:8px;">Upload a professional photo</p>
           <button class="photo-btn" onclick="document.getElementById('photo-input').click()">Choose Photo</button>
           <input type="file" id="photo-input" accept="image/*" style="display:none" onchange="previewPhoto(event)">
+          <button class="clear-photo-btn" onclick="clearPhoto()">✕ Remove Photo</button>
         </div>
       </div>
       <div class="row">
@@ -550,53 +569,32 @@
 
     <div class="card">
       <div class="card-title">Work Experience</div>
-      <div id="experience-container">
-        <div class="exp-block">
-          <div class="row">
-            <div class="field"><label>Job Title / Role</label><input class="role" placeholder="e.g. Digital Marketing Specialist"></div>
-            <div class="field"><label>Company</label><input class="company" placeholder="e.g. Borcelle Marketing Agency"></div>
-            <div class="field"><label>Duration</label><input class="years" placeholder="e.g. Jan 2023 – Present"></div>
-          </div>
-          <div class="field"><label>Responsibilities / Achievements</label><textarea class="details" placeholder="• Developed strategies...&#10;• Managed campaigns..."></textarea></div>
-        </div>
-      </div>
+      <div id="experience-container"></div>
       <button class="add-btn" onclick="addExperience()">+ Add Another Job</button>
     </div>
 
     <div class="card">
       <div class="card-title">Education</div>
-      <div id="education-container">
-        <div class="edu-block">
-          <div class="row">
-            <div class="field"><label>Degree</label><input class="degree" placeholder="e.g. Bachelor of Business Administration"></div>
-            <div class="field"><label>Field of Study</label><input class="field-study" placeholder="e.g. in Marketing"></div>
-            <div class="field"><label>School / University</label><input class="school" placeholder="e.g. University of Excellence"></div>
-            <div class="field"><label>Year / Duration</label><input class="year" placeholder="e.g. Sep 2017 – Oct 2020"></div>
-          </div>
-          <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Thesis on..." style="min-height:55px;"></textarea></div>
-        </div>
-      </div>
+      <div id="education-container"></div>
       <button class="add-btn" onclick="addEducation()">+ Add Education</button>
     </div>
 
     <div class="card">
       <div class="card-title">Certifications</div>
-      <div id="cert-container">
-        <div class="cert-block" style="display:flex;gap:10px;margin-bottom:10px;">
-          <input class="cert-name" placeholder="e.g. Certified Digital Marketing Professional (CDMP)" style="flex:2">
-          <input class="cert-org" placeholder="Issuing Organization" style="flex:1">
-        </div>
-      </div>
+      <div id="cert-container"></div>
       <button class="add-btn" onclick="addCert()">+ Add Certification</button>
     </div>
 
-    <button class="generate-btn" onclick="generate()">GENERATE RESUME →</button>
+    <div class="bottom-actions">
+      <button class="generate-btn" onclick="generate()">GENERATE RESUME →</button>
+      <button class="clear-all-btn" onclick="clearAll()">🗑 Clear All</button>
+    </div>
 
   </div>
 </div>
 
 <script>
-  // ── STATE ──
+  // ── SETTINGS STATE ──
   let settings = {
     template: 'classic',
     accent: '#8b6f5e',
@@ -606,28 +604,6 @@
     fontSize: 100
   };
 
-  // ── TEMPLATE ──
-  function setTemplate(t) {
-    settings.template = t;
-    document.querySelectorAll('.template-thumb').forEach(el => el.classList.remove('active'));
-    document.getElementById('tpl-' + t).classList.add('active');
-  }
-
-  // ── COLOR ──
-  function setColor(accent, bg, bgDark, idx) {
-    settings.accent = accent;
-    settings.bgColor = bg;
-    settings.bgDark = bgDark;
-    document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
-    if (idx !== undefined) document.getElementById('swatch-' + idx).classList.add('active');
-    document.getElementById('custom-accent').value = accent;
-    document.getElementById('custom-bg').value = bg;
-    document.documentElement.style.setProperty('--accent', accent);
-    document.documentElement.style.setProperty('--beige', bg);
-    document.documentElement.style.setProperty('--beige-dark', bgDark);
-  }
-
-  // override setColor calls to pass index
   const swatchColors = [
     ['#8b6f5e','#e8dcd2','#d4c4b5'],
     ['#2c6e8a','#d6eaf8','#b3d4e8'],
@@ -639,9 +615,172 @@
     ['#2c2c2c','#e8e8e8','#d0d0d0'],
   ];
 
-  document.querySelectorAll('.color-swatch').forEach((el, i) => {
-    el.onclick = () => setColor(...swatchColors[i], i);
+  // Build swatches
+  const sc = document.getElementById('swatch-container');
+  swatchColors.forEach((c, i) => {
+    const el = document.createElement('div');
+    el.className = 'color-swatch' + (i === 0 ? ' active' : '');
+    el.id = 'swatch-' + i;
+    el.style.background = c[0];
+    el.title = c[0];
+    el.onclick = () => setColor(c[0], c[1], c[2], i);
+    sc.appendChild(el);
   });
+
+  // ── AUTO SAVE ──
+  let saveTimer = null;
+
+  function triggerAutoSave() {
+    const dot = document.getElementById('autosave-dot');
+    const txt = document.getElementById('autosave-text');
+    dot.classList.add('saving');
+    txt.innerText = 'Saving...';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      saveFormToStorage();
+      dot.classList.remove('saving');
+      txt.innerText = 'Auto-saved ✓';
+    }, 800);
+  }
+
+  function saveFormToStorage() {
+    const draft = {
+      settings,
+      photo: window._photoData || null,
+      name: document.getElementById("name").value,
+      title: document.getElementById("title").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value,
+      address: document.getElementById("address").value,
+      website: document.getElementById("website").value,
+      summary: document.getElementById("summary").value,
+      skills: document.getElementById("skills").value,
+      experience: [],
+      education: [],
+      certifications: []
+    };
+
+    document.querySelectorAll(".exp-block").forEach(b => {
+      draft.experience.push({
+        role: b.querySelector(".role").value,
+        company: b.querySelector(".company").value,
+        years: b.querySelector(".years").value,
+        details: b.querySelector(".details").value
+      });
+    });
+
+    document.querySelectorAll(".edu-block").forEach(b => {
+      draft.education.push({
+        degree: b.querySelector(".degree").value,
+        fieldStudy: b.querySelector(".field-study").value,
+        school: b.querySelector(".school").value,
+        year: b.querySelector(".year").value,
+        details: b.querySelector(".edu-details").value
+      });
+    });
+
+    document.querySelectorAll(".cert-block").forEach(b => {
+      draft.certifications.push({
+        name: b.querySelector(".cert-name").value,
+        org: b.querySelector(".cert-org").value
+      });
+    });
+
+    localStorage.setItem("resumeDraft", JSON.stringify(draft));
+  }
+
+  // Listen to ALL input/change events on the form
+  document.addEventListener('input', e => {
+    if (e.target.closest('.form-area')) triggerAutoSave();
+  });
+
+  // ── RESTORE FROM STORAGE ──
+  function restoreForm() {
+    const saved = localStorage.getItem("resumeDraft");
+    if (!saved) {
+      // No saved data — add one empty block each
+      addExperience();
+      addEducation();
+      addCert();
+      return;
+    }
+
+    const d = JSON.parse(saved);
+
+    // Restore settings
+    if (d.settings) {
+      settings = d.settings;
+      setTemplate(settings.template || 'classic');
+      setColor(settings.accent, settings.bgColor, settings.bgDark);
+      setFont(settings.font || 'Open Sans');
+      document.getElementById('size-slider').value = settings.fontSize || 100;
+      document.getElementById('size-display').innerText = (settings.fontSize || 100) + '%';
+      document.getElementById('custom-accent').value = settings.accent || '#8b6f5e';
+      document.getElementById('custom-bg').value = settings.bgColor || '#e8dcd2';
+    }
+
+    // Restore photo
+    if (d.photo) {
+      window._photoData = d.photo;
+      document.getElementById('photo-preview').innerHTML = `<img src="${d.photo}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    }
+
+    // Restore basic fields
+    const fields = ['name','title','phone','email','address','website','summary','skills'];
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && d[id] !== undefined) el.value = d[id];
+    });
+
+    // Restore experience
+    const expContainer = document.getElementById("experience-container");
+    if (d.experience && d.experience.length > 0) {
+      d.experience.forEach(e => addExperience(e));
+    } else {
+      addExperience();
+    }
+
+    // Restore education
+    const eduContainer = document.getElementById("education-container");
+    if (d.education && d.education.length > 0) {
+      d.education.forEach(e => addEducation(e));
+    } else {
+      addEducation();
+    }
+
+    // Restore certifications
+    if (d.certifications && d.certifications.length > 0) {
+      d.certifications.forEach(c => addCert(c));
+    } else {
+      addCert();
+    }
+  }
+
+  // ── TEMPLATE ──
+  function setTemplate(t) {
+    settings.template = t;
+    document.querySelectorAll('.template-thumb').forEach(el => el.classList.remove('active'));
+    const el = document.getElementById('tpl-' + t);
+    if (el) el.classList.add('active');
+    triggerAutoSave();
+  }
+
+  // ── COLOR ──
+  function setColor(accent, bg, bgDark, idx) {
+    settings.accent = accent;
+    settings.bgColor = bg;
+    settings.bgDark = bgDark || shadeColor(bg, -15);
+    document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+    if (idx !== undefined) {
+      const el = document.getElementById('swatch-' + idx);
+      if (el) el.classList.add('active');
+    }
+    document.getElementById('custom-accent').value = accent;
+    document.getElementById('custom-bg').value = bg;
+    document.documentElement.style.setProperty('--accent', accent);
+    document.documentElement.style.setProperty('--beige', bg);
+    document.documentElement.style.setProperty('--beige-dark', settings.bgDark);
+  }
 
   function applyCustomColor() {
     settings.accent = document.getElementById('custom-accent').value;
@@ -651,6 +790,7 @@
     document.documentElement.style.setProperty('--accent', settings.accent);
     document.documentElement.style.setProperty('--beige', settings.bgColor);
     document.documentElement.style.setProperty('--beige-dark', settings.bgDark);
+    triggerAutoSave();
   }
 
   function shadeColor(hex, percent) {
@@ -666,18 +806,22 @@
     settings.fontSize = Math.max(80, Math.min(120, settings.fontSize + delta * 5));
     document.getElementById('size-display').innerText = settings.fontSize + '%';
     document.getElementById('size-slider').value = settings.fontSize;
+    triggerAutoSave();
   }
 
   function sliderSize(val) {
     settings.fontSize = parseInt(val);
     document.getElementById('size-display').innerText = settings.fontSize + '%';
+    triggerAutoSave();
   }
 
   // ── FONT ──
   function setFont(font) {
     settings.font = font;
     document.querySelectorAll('.font-option').forEach(el => el.classList.remove('active'));
-    document.getElementById('font-' + font).classList.add('active');
+    const el = document.getElementById('font-' + font);
+    if (el) el.classList.add('active');
+    triggerAutoSave();
   }
 
   // ── PHOTO ──
@@ -688,55 +832,70 @@
     reader.onload = e => {
       document.getElementById('photo-preview').innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
       window._photoData = e.target.result;
+      triggerAutoSave();
     };
     reader.readAsDataURL(file);
   }
 
-  // ── ADD/REMOVE BLOCKS ──
-  function addExperience() {
+  function clearPhoto() {
+    window._photoData = null;
+    document.getElementById('photo-preview').innerHTML = `<span style="font-size:32px">👤</span>`;
+    triggerAutoSave();
+  }
+
+  // ── ADD BLOCKS ──
+  function addExperience(data = {}) {
     const c = document.getElementById("experience-container");
     const b = document.createElement("div");
     b.classList.add("exp-block");
     b.innerHTML = `
-      <button class="remove-btn" onclick="this.parentElement.remove()">✕ Remove</button>
+      <button class="remove-btn" onclick="this.parentElement.remove();triggerAutoSave()">✕ Remove</button>
       <div class="row">
-        <div class="field"><label>Job Title / Role</label><input class="role" placeholder="e.g. Marketing Coordinator"></div>
-        <div class="field"><label>Company</label><input class="company" placeholder="e.g. Stafford & Co"></div>
-        <div class="field"><label>Duration</label><input class="years" placeholder="e.g. July 2021 – Dec 2022"></div>
+        <div class="field"><label>Job Title / Role</label><input class="role" placeholder="e.g. Marketing Coordinator" value="${data.role || ''}"></div>
+        <div class="field"><label>Company</label><input class="company" placeholder="e.g. Stafford & Co" value="${data.company || ''}"></div>
+        <div class="field"><label>Duration</label><input class="years" placeholder="e.g. July 2021 – Dec 2022" value="${data.years || ''}"></div>
       </div>
-      <div class="field"><label>Responsibilities / Achievements</label><textarea class="details" placeholder="• Coordinated events..."></textarea></div>
+      <div class="field"><label>Responsibilities / Achievements</label><textarea class="details" placeholder="• Coordinated events...">${data.details || ''}</textarea></div>
     `;
     c.appendChild(b);
   }
 
-  function addEducation() {
+  function addEducation(data = {}) {
     const c = document.getElementById("education-container");
     const b = document.createElement("div");
     b.classList.add("edu-block");
     b.innerHTML = `
-      <button class="remove-btn" onclick="this.parentElement.remove()">✕ Remove</button>
+      <button class="remove-btn" onclick="this.parentElement.remove();triggerAutoSave()">✕ Remove</button>
       <div class="row">
-        <div class="field"><label>Degree</label><input class="degree" placeholder="e.g. Diploma"></div>
-        <div class="field"><label>Field of Study</label><input class="field-study" placeholder="e.g. in Digital Marketing"></div>
-        <div class="field"><label>School / University</label><input class="school" placeholder="e.g. Marketing Academy"></div>
-        <div class="field"><label>Year / Duration</label><input class="year" placeholder="e.g. Aug 2015 – Aug 2017"></div>
+        <div class="field"><label>Degree</label><input class="degree" placeholder="e.g. Bachelor of Business" value="${data.degree || ''}"></div>
+        <div class="field"><label>Field of Study</label><input class="field-study" placeholder="e.g. in Marketing" value="${data.fieldStudy || ''}"></div>
+        <div class="field"><label>School / University</label><input class="school" placeholder="e.g. University of Excellence" value="${data.school || ''}"></div>
+        <div class="field"><label>Year / Duration</label><input class="year" placeholder="e.g. Sep 2017 – Oct 2020" value="${data.year || ''}"></div>
       </div>
-      <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Relevant Coursework..." style="min-height:55px;"></textarea></div>
+      <div class="field"><label>Notable Achievements (optional)</label><textarea class="edu-details" placeholder="• Thesis on..." style="min-height:55px;">${data.details || ''}</textarea></div>
     `;
     c.appendChild(b);
   }
 
-  function addCert() {
+  function addCert(data = {}) {
     const c = document.getElementById("cert-container");
     const d = document.createElement("div");
     d.className = "cert-block";
-    d.style.cssText = "display:flex;gap:10px;margin-bottom:10px;position:relative;";
+    d.style.cssText = "display:flex;gap:10px;margin-bottom:10px;position:relative;align-items:center;";
     d.innerHTML = `
-      <input class="cert-name" placeholder="Certification name" style="flex:2">
-      <input class="cert-org" placeholder="Issuing Organization" style="flex:1">
-      <button class="remove-btn" style="position:static;margin-left:4px;" onclick="this.parentElement.remove()">✕</button>
+      <input class="cert-name" placeholder="Certification name" style="flex:2" value="${data.name || ''}">
+      <input class="cert-org" placeholder="Issuing Organization" style="flex:1" value="${data.org || ''}">
+      <button class="remove-btn" style="position:static;margin-left:4px;" onclick="this.parentElement.remove();triggerAutoSave()">✕</button>
     `;
     c.appendChild(d);
+  }
+
+  // ── CLEAR ALL ──
+  function clearAll() {
+    if (!confirm("Clear all data? This cannot be undone.")) return;
+    localStorage.removeItem("resumeDraft");
+    localStorage.removeItem("resumeData");
+    location.reload();
   }
 
   // ── GENERATE ──
@@ -785,6 +944,9 @@
     localStorage.setItem("resumeData", JSON.stringify(data));
     window.location.href = "resume.html";
   }
+
+  // ── INIT: restore on page load ──
+  restoreForm();
 </script>
 </body>
 </html>
