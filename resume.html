@@ -22,250 +22,212 @@
       background: #f0ece8;
     }
 
-    /* ── WRAPPER ── */
     .resume-wrapper {
       display: flex;
       flex-direction: row;
       width: 210mm;
-      min-height: 297mm;
+      height: 297mm;
       margin: 30px auto;
       box-shadow: 0 4px 30px rgba(0,0,0,0.18);
-      font-size: calc(11px * var(--scale));
+      overflow: hidden;
     }
 
-    /* ══ TEMPLATE: CLASSIC ══ */
-    .tpl-classic .left {
-      width: 34%;
-      background: var(--beige);
-      display: flex;
-      flex-direction: column;
-    }
+    /* ══ TEMPLATES ══ */
+    .tpl-classic .left { background: var(--beige) !important; }
+    .tpl-classic .photo-area { background: var(--beige-dark) !important; }
 
-    .tpl-classic .photo-area {
-      background: var(--beige-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px 18px;
-    }
-
-    /* ══ TEMPLATE: MODERN ══ */
-    .tpl-modern .left {
-      width: 35%;
-      background: var(--accent);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .tpl-modern .photo-area {
-      background: rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px 18px;
-    }
-
-    .tpl-modern .left-section-title {
-      color: white !important;
-      border-bottom-color: rgba(255,255,255,0.3) !important;
-    }
-
+    .tpl-modern .left { background: var(--accent) !important; }
+    .tpl-modern .photo-area { background: rgba(0,0,0,0.15) !important; }
+    .tpl-modern .left-section-title { color: white !important; border-bottom-color: rgba(255,255,255,0.3) !important; }
     .tpl-modern .contact-item,
     .tpl-modern .edu-degree,
     .tpl-modern .edu-school,
     .tpl-modern .edu-year,
-    .tpl-modern .edu-details-text,
-    .tpl-modern .skills-list li {
-      color: rgba(255,255,255,0.9) !important;
-    }
-
+    .tpl-modern .skills-list li { color: rgba(255,255,255,0.92) !important; }
     .tpl-modern .skills-list li::before { color: white !important; }
 
-    /* ══ TEMPLATE: MINIMAL ══ */
-    .tpl-minimal .left {
-      width: 32%;
-      background: #fafafa;
-      border-right: 3px solid var(--accent);
-      display: flex;
-      flex-direction: column;
-    }
+    .tpl-minimal .left { background: #fafafa !important; border-right: 3px solid var(--accent) !important; }
+    .tpl-minimal .photo-area { background: #efefef !important; }
 
-    .tpl-minimal .photo-area {
-      background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px 18px;
-    }
-
-    .tpl-minimal .right { background: white; }
-
-    /* ══ TEMPLATE: ELEGANT ══ */
-    .tpl-elegant .left {
-      width: 32%;
-      background: #1a1a2e;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .tpl-elegant .photo-area {
-      background: rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px 18px;
-    }
-
-    .tpl-elegant .left-section-title {
-      color: var(--beige) !important;
-      border-bottom-color: rgba(255,255,255,0.15) !important;
-    }
-
+    .tpl-elegant .left { background: #1a1a2e !important; }
+    .tpl-elegant .photo-area { background: rgba(0,0,0,0.3) !important; }
+    .tpl-elegant .left-section-title { color: var(--beige) !important; border-bottom-color: rgba(255,255,255,0.15) !important; }
     .tpl-elegant .contact-item,
     .tpl-elegant .edu-degree,
     .tpl-elegant .edu-school,
     .tpl-elegant .edu-year,
-    .tpl-elegant .edu-details-text,
-    .tpl-elegant .skills-list li {
-      color: rgba(255,255,255,0.8) !important;
-    }
-
+    .tpl-elegant .skills-list li { color: rgba(255,255,255,0.82) !important; }
     .tpl-elegant .skills-list li::before { color: var(--beige) !important; }
-    .tpl-elegant .right { background: #fefefe; }
-    .tpl-elegant .name-block { border-bottom-color: #1a1a2e !important; }
     .tpl-elegant .resume-name { color: #1a1a2e !important; }
+    .tpl-elegant .name-block { border-bottom-color: #1a1a2e !important; }
 
-    /* ── SHARED LEFT STYLES ── */
-    .photo-area img {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    /* ── LEFT ── */
+    .left {
+      width: 34%;
+      flex-shrink: 0;
+      background: var(--beige);
+      display: flex;
+      flex-direction: column;
+      height: 297mm;
+      overflow: hidden;
     }
 
-    .photo-placeholder {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 4px solid white;
+    .photo-area {
+      background: var(--beige-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
-      opacity: 0.4;
+      padding: 24px 20px 16px;
+      flex-shrink: 0;
     }
 
-    .left-content { padding: 18px 16px; flex: 1; }
-    .left-section { margin-bottom: 18px; }
+    .photo-area img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+      background: rgba(255,255,255,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder svg {
+      width: 50px;
+      height: 50px;
+      opacity: 0.5;
+      fill: white;
+    }
+
+    .left-content {
+      padding: 14px 13px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .left-section { margin-bottom: 12px; }
 
     .left-section-title {
-      font-family: var(--font);
-      font-size: calc(10px * var(--scale));
+      font-size: calc(9px * var(--scale));
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.5px;
       color: var(--accent);
-      border-bottom: 1.5px solid var(--beige-dark);
-      padding-bottom: 5px;
-      margin-bottom: 9px;
+      border-bottom: 1px solid var(--beige-dark);
+      padding-bottom: 3px;
+      margin-bottom: 7px;
     }
 
     .contact-item {
       display: flex;
       align-items: flex-start;
-      gap: 6px;
-      margin-bottom: 6px;
-      font-size: calc(10px * var(--scale));
-      line-height: 1.5;
+      gap: 5px;
+      margin-bottom: 4px;
+      font-size: calc(9px * var(--scale));
+      line-height: 1.4;
       color: #444;
+      word-break: break-word;
     }
 
-    .contact-icon { font-size: calc(10px * var(--scale)); flex-shrink: 0; margin-top: 2px; }
+    .contact-icon { font-size: 9px; flex-shrink: 0; margin-top: 1px; }
 
-    .edu-entry { margin-bottom: 11px; }
-    .edu-degree { font-size: calc(10.5px * var(--scale)); font-weight: 700; color: var(--dark); line-height: 1.4; }
-    .edu-school { font-size: calc(10px * var(--scale)); color: #666; margin-top: 1px; }
-    .edu-year { font-size: calc(9.5px * var(--scale)); color: #888; margin-top: 1px; }
-    .edu-details-text { font-size: calc(9.5px * var(--scale)); color: #555; margin-top: 4px; line-height: 1.5; }
+    .edu-entry { margin-bottom: 8px; }
+    .edu-degree { font-size: calc(9px * var(--scale)); font-weight: 700; color: var(--dark); line-height: 1.3; }
+    .edu-school { font-size: calc(8.5px * var(--scale)); color: #666; margin-top: 1px; }
+    .edu-year { font-size: calc(8px * var(--scale)); color: var(--accent); margin-top: 1px; font-weight: 600; }
 
     .skills-list { list-style: none; padding: 0; }
     .skills-list li {
-      font-size: calc(10px * var(--scale));
+      font-size: calc(9px * var(--scale));
       color: #444;
-      padding: 3px 0 3px 12px;
+      padding: 2px 0 2px 10px;
       position: relative;
-      line-height: 1.4;
+      line-height: 1.35;
     }
     .skills-list li::before {
       content: '▸';
       position: absolute;
       left: 0;
       color: var(--accent);
-      font-size: calc(9px * var(--scale));
-      top: 4px;
+      font-size: 8px;
+      top: 3px;
     }
 
     /* ── RIGHT ── */
     .right {
       flex: 1;
       background: white;
-      padding: 28px 26px 28px 24px;
+      padding: 24px 22px 24px 20px;
       display: flex;
       flex-direction: column;
+      height: 297mm;
+      overflow: hidden;
+      min-width: 0;
     }
 
     .name-block {
-      margin-bottom: 14px;
-      padding-bottom: 12px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
       border-bottom: 2px solid var(--beige);
+      flex-shrink: 0;
     }
 
     .resume-name {
-      font-family: var(--font);
-      font-size: calc(24px * var(--scale));
+      font-size: calc(20px * var(--scale));
       font-weight: 700;
       color: var(--dark);
-      line-height: 1.2;
+      line-height: 1.15;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .resume-title {
-      font-size: calc(11px * var(--scale));
+      font-size: calc(9.5px * var(--scale));
       font-weight: 600;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-top: 5px;
+      margin-top: 3px;
     }
 
-    .right-section { margin-bottom: 14px; }
+    .right-section { margin-bottom: 10px; flex-shrink: 0; }
 
     .right-section-title {
-      font-family: var(--font);
-      font-size: calc(11px * var(--scale));
+      font-size: calc(9.5px * var(--scale));
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--dark);
       border-bottom: 1.5px solid var(--beige);
-      padding-bottom: 4px;
-      margin-bottom: 9px;
+      padding-bottom: 3px;
+      margin-bottom: 7px;
     }
 
-    .summary-text { font-size: calc(11px * var(--scale)); color: #555; line-height: 1.7; }
+    .summary-text {
+      font-size: calc(9.5px * var(--scale));
+      color: #555;
+      line-height: 1.6;
+    }
 
-    .job-entry { margin-bottom: 11px; }
-    .job-role { font-size: calc(11.5px * var(--scale)); font-weight: 700; color: var(--dark); }
-    .job-company { font-size: calc(11px * var(--scale)); color: var(--accent); font-weight: 600; margin-top: 1px; }
-    .job-years { font-size: calc(10px * var(--scale)); color: #888; margin-top: 1px; margin-bottom: 4px; }
-    .job-details { font-size: calc(10.5px * var(--scale)); color: #555; line-height: 1.6; white-space: pre-line; }
+    .job-entry { margin-bottom: 8px; }
+    .job-role { font-size: calc(10px * var(--scale)); font-weight: 700; color: var(--dark); }
+    .job-company { font-size: calc(9.5px * var(--scale)); color: var(--accent); font-weight: 600; margin-top: 1px; }
+    .job-years { font-size: calc(8.5px * var(--scale)); color: #888; margin-top: 1px; margin-bottom: 3px; }
+    .job-details { font-size: calc(9px * var(--scale)); color: #555; line-height: 1.5; white-space: pre-line; }
 
-    .cert-entry { margin-bottom: 7px; }
-    .cert-name-text { font-size: calc(11px * var(--scale)); font-weight: 600; color: var(--dark); }
-    .cert-org-text { font-size: calc(10px * var(--scale)); color: #888; margin-top: 1px; }
+    .cert-entry { margin-bottom: 5px; }
+    .cert-name-text { font-size: calc(9.5px * var(--scale)); font-weight: 600; color: var(--dark); }
+    .cert-org-text { font-size: calc(8.5px * var(--scale)); color: #888; margin-top: 1px; }
 
     /* ── BUTTONS ── */
     .top-bar {
@@ -310,14 +272,11 @@
     /* ── PRINT ── */
     @media print {
       @page {
-        size: 210mm 297mm portrait;
-        margin: 0mm;
-      }
+  size: 210mm 297mm portrait;
+  margin: 0mm 8mm;
+}
 
-      html {
-        width: 210mm;
-        height: 297mm;
-      }
+      html { width: 210mm; height: 297mm; }
 
       body {
         width: 210mm !important;
@@ -350,34 +309,33 @@
         page-break-inside: avoid !important;
       }
 
-      .tpl-classic .left,
-      .tpl-minimal .left { background: var(--beige) !important; }
-      .tpl-modern .left { background: var(--accent) !important; }
-      .tpl-elegant .left { background: #1a1a2e !important; }
-
-      .tpl-classic .photo-area,
-      .tpl-minimal .photo-area { background: var(--beige-dark) !important; }
-      .tpl-modern .photo-area { background: rgba(0,0,0,0.15) !important; }
-      .tpl-elegant .photo-area { background: rgba(0,0,0,0.3) !important; }
-
       .left {
         height: 297mm !important;
+        overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
-        overflow: hidden !important;
       }
 
       .right {
         height: 297mm !important;
-        background: white !important;
         overflow: hidden !important;
+        background: white !important;
       }
+
+      .tpl-classic .left { background: var(--beige) !important; }
+      .tpl-classic .photo-area { background: var(--beige-dark) !important; }
+      .tpl-modern .left { background: var(--accent) !important; }
+      .tpl-modern .photo-area { background: rgba(0,0,0,0.15) !important; }
+      .tpl-minimal .left { background: #fafafa !important; border-right: 3px solid var(--accent) !important; }
+      .tpl-minimal .photo-area { background: #efefef !important; }
+      .tpl-elegant .left { background: #1a1a2e !important; }
+      .tpl-elegant .photo-area { background: rgba(0,0,0,0.3) !important; }
     }
 
     @media (max-width: 700px) {
       body { background: white; }
-      .resume-wrapper { flex-direction: column; width: 100%; margin: 0; }
-      .left, .right { width: 100% !important; }
+      .resume-wrapper { flex-direction: column; width: 100%; height: auto; margin: 0; }
+      .left, .right { width: 100% !important; height: auto !important; }
       .top-bar { position: static; padding: 12px; background: #f0ece8; flex-wrap: wrap; }
     }
   </style>
@@ -393,7 +351,11 @@
 
   <div class="left" id="left-panel">
     <div class="photo-area" id="photo-area">
-      <div class="photo-placeholder">👤</div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
     </div>
     <div class="left-content">
       <div class="left-section">
@@ -441,33 +403,33 @@
 
   // ── APPLY SETTINGS ──
   const root = document.documentElement;
-  const accent = s.accent || '#8b6f5e';
-  const beige  = s.bgColor || '#e8dcd2';
-  const beigeDark = s.bgDark || '#d4c4b5';
-  const font   = s.font || 'Open Sans';
-  const scale  = (s.fontSize || 100) / 100;
-  const tpl    = s.template || 'classic';
+  const accent    = s.accent   || '#8b6f5e';
+  const beige     = s.bgColor  || '#e8dcd2';
+  const beigeDark = s.bgDark   || '#d4c4b5';
+  const font      = s.font     || 'Open Sans';
+  const userScale = (s.fontSize || 100) / 100;
+  const tpl       = s.template || 'classic';
 
-  root.style.setProperty('--accent', accent);
-  root.style.setProperty('--beige', beige);
+  root.style.setProperty('--accent',     accent);
+  root.style.setProperty('--beige',      beige);
   root.style.setProperty('--beige-dark', beigeDark);
-  root.style.setProperty('--font', `'${font}', sans-serif`);
-  root.style.setProperty('--scale', scale);
+  root.style.setProperty('--font',       `'${font}', sans-serif`);
+  root.style.setProperty('--scale',      userScale);
 
-  // Apply template class
   document.getElementById('resume-wrapper').className = `resume-wrapper tpl-${tpl}`;
 
   // ── PHOTO ──
   if (data.photo) {
-    document.getElementById("photo-area").innerHTML = `<img src="${data.photo}" alt="Profile Photo">`;
+    document.getElementById("photo-area").innerHTML =
+      `<img src="${data.photo}" alt="Profile Photo">`;
   }
 
-  // ── BASIC INFO ──
-  document.getElementById("name").innerText = data.name || "YOUR NAME";
-  document.getElementById("job-title").innerText = data.title || "";
-  document.getElementById("address").innerText = data.address || "";
-  document.getElementById("phone").innerText = data.phone || "";
-  document.getElementById("email").innerText = data.email || "";
+  // ── BASIC ──
+  document.getElementById("name").innerText      = data.name    || "YOUR NAME";
+  document.getElementById("job-title").innerText = data.title   || "";
+  document.getElementById("address").innerText   = data.address || "";
+  document.getElementById("phone").innerText     = data.phone   || "";
+  document.getElementById("email").innerText     = data.email   || "";
 
   if (data.website) {
     document.getElementById("website").innerText = data.website;
@@ -480,23 +442,23 @@
 
   // ── SKILLS ──
   const skillsList = document.getElementById("skills-list");
-  (data.skills || []).forEach(s => {
-    if (!s) return;
+  (Array.isArray(data.skills) ? data.skills : []).forEach(skill => {
+    if (!skill || !skill.trim()) return;
     const li = document.createElement("li");
-    li.innerText = s;
+    li.innerText = skill.trim();
     skillsList.appendChild(li);
   });
 
-  // ── EDUCATION ──
+  // ── EDUCATION (left panel — degree/school/year only) ──
   const eduList = document.getElementById("education-list");
   (data.education || []).forEach(e => {
+    if (!e.degree && !e.school) return;
     const div = document.createElement("div");
     div.className = "edu-entry";
     div.innerHTML = `
       <div class="edu-degree">${e.degree || ""}${e.fieldStudy ? " " + e.fieldStudy : ""}</div>
       <div class="edu-school">${e.school || ""}</div>
       <div class="edu-year">${e.year || ""}</div>
-      ${e.details ? `<div class="edu-details-text">${e.details.replace(/\n/g,'<br>')}</div>` : ""}
     `;
     eduList.appendChild(div);
   });
@@ -504,31 +466,65 @@
   // ── EXPERIENCE ──
   const expList = document.getElementById("experience-list");
   (data.experience || []).forEach(e => {
+    if (!e.role && !e.company) return;
     const div = document.createElement("div");
     div.className = "job-entry";
     div.innerHTML = `
       <div class="job-role">${e.role || ""}</div>
       <div class="job-company">${e.company || ""}</div>
       <div class="job-years">${e.years || ""}</div>
-      <div class="job-details">${(e.details || "").replace(/\n/g,'<br>')}</div>
+      <div class="job-details">${(e.details || "").replace(/\n/g, '<br>')}</div>
     `;
     expList.appendChild(div);
   });
 
   // ── CERTIFICATIONS ──
   const certList = document.getElementById("certifications-list");
-  if (data.certifications && data.certifications.length > 0) {
-    data.certifications.forEach(c => {
+  const certs = (data.certifications || []).filter(c => c.name && c.name.trim());
+  if (certs.length > 0) {
+    certs.forEach(c => {
       const div = document.createElement("div");
       div.className = "cert-entry";
       div.innerHTML = `
-        <div class="cert-name-text">${c.name || ""}</div>
+        <div class="cert-name-text">${c.name}</div>
         ${c.org ? `<div class="cert-org-text">${c.org}</div>` : ""}
       `;
       certList.appendChild(div);
     });
   } else {
     document.getElementById("cert-section").style.display = "none";
+  }
+
+  // ── AUTO-FIT: shrink font until both panels fit in 297mm ──
+  function autoFit() {
+    const PX_PER_MM = 3.7795275591;
+    const maxHeight = 297 * PX_PER_MM;
+
+    const left  = document.getElementById("left-panel");
+    const right = document.getElementById("right-panel");
+
+    let scale = userScale;
+    let attempts = 0;
+
+    while (attempts < 30) {
+      const leftOverflow  = left.scrollHeight  > maxHeight;
+      const rightOverflow = right.scrollHeight > maxHeight;
+
+      if (!leftOverflow && !rightOverflow) break;
+
+      scale = Math.max(0.55, scale - 0.03);
+      root.style.setProperty('--scale', scale);
+      attempts++;
+    }
+
+    console.log(`Auto-fit scale: ${scale.toFixed(2)} after ${attempts} steps`);
+  }
+
+  // Run after fonts load
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(autoFit);
+  } else {
+    setTimeout(autoFit, 500);
   }
 </script>
 
