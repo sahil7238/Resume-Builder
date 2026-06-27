@@ -272,9 +272,9 @@
     /* ── PRINT ── */
     @media print {
       @page {
-  size: 210mm 297mm portrait;
-  margin: 0mm 8mm;
-}
+        size: 210mm 297mm portrait;
+        margin: 0mm 8mm;
+      }
 
       html { width: 210mm; height: 297mm; }
 
@@ -299,7 +299,7 @@
       .resume-wrapper {
         display: flex !important;
         flex-direction: row !important;
-        width: 210mm !important;
+        width: 100% !important;
         height: 297mm !important;
         min-height: unset !important;
         margin: 0 !important;
@@ -449,7 +449,7 @@
     skillsList.appendChild(li);
   });
 
-  // ── EDUCATION (left panel — degree/school/year only) ──
+  // ── EDUCATION ──
   const eduList = document.getElementById("education-list");
   (data.education || []).forEach(e => {
     if (!e.degree && !e.school) return;
@@ -509,9 +509,7 @@
     while (attempts < 30) {
       const leftOverflow  = left.scrollHeight  > maxHeight;
       const rightOverflow = right.scrollHeight > maxHeight;
-
       if (!leftOverflow && !rightOverflow) break;
-
       scale = Math.max(0.55, scale - 0.03);
       root.style.setProperty('--scale', scale);
       attempts++;
@@ -520,7 +518,6 @@
     console.log(`Auto-fit scale: ${scale.toFixed(2)} after ${attempts} steps`);
   }
 
-  // Run after fonts load
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(autoFit);
   } else {
